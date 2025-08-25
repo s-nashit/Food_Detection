@@ -38,7 +38,6 @@ RAW_MATERIALS_USAGE = {
     'hamburger': {'bun': 1, 'patty': 0.15, 'lettuce': 0.02, 'cheese': 0.02, 'tomato': 0.03},
     'ice_cream': {'milk': 0.1, 'sugar': 0.02, 'cream': 0.05},
     'pizza': {'flour': 0.15, 'cheese': 0.08, 'tomato_sauce': 0.04, 'toppings': 0.08},
-    # Newly added items
     'badammilk': {'milk': 0.2, 'almonds': 0.03, 'sugar': 0.02, 'cardamom': 0.001},
     'cholekulcha': {'chickpeas': 0.1, 'flour': 0.08, 'spices': 0.01, 'oil': 0.02},
     'coldcoffee': {'milk': 0.2, 'coffee': 0.01, 'sugar': 0.02, 'ice': 0.05},
@@ -54,7 +53,7 @@ RAW_MATERIALS_USAGE = {
     'littichoka': {'sattu_flour': 0.1, 'spices': 0.02, 'potato': 0.05, 'tomatoes': 0.03, 'oil': 0.02}
 }
 
-# ---- RAW MATERIAL MONTHLY PROJECTION ----
+
 def calculate_monthly_breakdown(detection_df, year, month):
     item_counts = dict(zip(
         detection_df['Class'].str.lower().str.replace(" ", "_"), 
@@ -211,7 +210,7 @@ if st.button("Monthly Procurement"):
                 procurement_markdown = build_procurement_markdown(
                     summary_df, 
                     year=today.year, 
-                    month=today.month
+                    month=today.month+1
                 )
                 
                 st.markdown(procurement_markdown)
@@ -224,7 +223,7 @@ if st.button("Monthly Procurement"):
                 with col2:
                     st.metric("Unique Food Types", len(summary_df))
                 with col3:
-                    days_in_month = calendar.monthrange(today.year, today.month)[1]
+                    days_in_month = calendar.monthrange(today.year, today.month+1)[1]
                     monthly_total = summary_df['Count'].sum() * days_in_month
                     st.metric("Projected Monthly Total", monthly_total)
                     
