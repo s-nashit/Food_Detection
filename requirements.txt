@@ -5,3 +5,12 @@ pandas
 gdown
 lap
 yolo5
+pandas          # if you're logging or displaying results
+matplotlib      # if you're plotting detection results
+gdown           # if you're downloading models from Google Drive
+lap             # if you're using tracking features
+ultralytics
+opencv-python-headless==4.12.0.88
+Pillow
+numpy
+streamlit
