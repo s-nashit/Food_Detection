@@ -115,12 +115,12 @@ def build_procurement_markdown(df, year, month):
             calculation_rows.append(
                 (orig_name.get(item_key, item_key), monthly_count, mat, per_item_qty, total_qty)
             )
-    md1 = '## 1. Estimated Monthly Consumption of Food Items\n\n'
+    md1 = '## 1. Estimated Monthly Consumption\n\n'
     md1 += "| Food Item | Daily Count | Days in Month | Estimated Monthly Count |\n"
     md1 += "|-----------|:-----------:|:-------------:|:----------------------:|\n"
     for item, daily, days, monthly in items:
         md1 += f"| {item} | {daily} | {days} | {monthly} |\n"
-    md2 = f'## 2. Estimated Raw Material Requirement for {calendar.month_name[month]} {year}\n\n'
+    md2 = f'## 2. Estimated Raw Material Requirement for {calendar.month_name[month] + 1} {year}\n\n'
     md2 += "| Raw Material | Calculation Details | Total Quantity (kg/units) |\n"
     md2 += "|--------------|--------------------|:------------------------:|\n"
     for mat, (total, calcs) in raw_material_totals.items():
